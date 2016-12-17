@@ -2,23 +2,35 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>html5</title>
+    <title>RJ拼图小游戏</title>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 </head>
 <body>
 
 <style type="text/css">
-    body{margin:0; background-image:url('http://img02.tooopen.com/images/20150714/tooopen_sy_133977424913.jpg');
+    body{
+        margin:0;
+        background-image:url('http://img02.tooopen.com/images/20150714/tooopen_sy_133977424913.jpg');
     }
     .wrap{
+        width:400px;
+        height: 400px;
+        margin-top: 100px;
+        margin-left:auto;
+        margin-right:auto;
+        overflow:hidden;
+        padding: 10px 10px;
+
+    }
+    .show{
         width:400px;
         height: 400px;
         margin:100px auto;
         overflow:hidden;
         padding: 10px 10px;
+        float: left;
     }
     .box{
-
         text-align:center;
         font-size:100px;
         font-weight:bold;float:left;
@@ -26,9 +38,92 @@
         height:98px;
         border:1px solid #999;
         z-index: -1;
-
+        overflow: hidden
     }
 
+    #img00{
+        position: relative;
+        left: 0px;
+        top: 0px;
+    }
+    #img01{
+        position: relative;
+        left: -100px;
+        top: 0px;
+    }
+    #img02{
+        position: relative;
+        left: -200px;
+        top: 0px;
+    }
+    #img03{
+        position: relative;
+        left: -300px;
+        top: 0px;
+    }
+    #img10{
+        position: relative;
+        left: 0px;
+        top: -100px;
+    }
+    #img11{
+        position: relative;
+        left: -100px;
+        top: -100px;
+    }
+    #img12{
+        position: relative;
+        left: -200px;
+        top: -100px;
+    }
+    #img13{
+        position: relative;
+        left: -300px;
+        top: -100px;
+    }
+    #img20{
+        position: relative;
+        left: 0px;
+        top: -200px;
+    }
+    #img21{
+        position: relative;
+        left: -100px;
+        top: -200px;
+    }
+    #img22{
+        position: relative;
+        left: -200px;
+        top: -200px;
+    }
+    #img23{
+        position: relative;
+        left: -300px;
+        top: -200px;
+    }
+    #img30{
+        position: relative;
+        left: 0px;
+        top: -300px;
+    }
+    #img31{
+        position: relative;
+        left: -100px;
+        top: -300px;
+    }
+    #img32{
+        position: relative;
+        left: -200px;
+        top: -300px;
+    }
+    #img33{
+        position: relative;
+        left: -300px;
+        top: -300px;
+    }
+    #beNull{
+        display: none;
+    }
     .selected{
         position: relative;
         -webkit-box-shadow:0 0 20px #0CC;
@@ -36,41 +131,129 @@
         box-shadow:0 0 20px #0CC;
         z-index: 20;
     }
+
 </style>
 
 <div class="wrap">
-    <div class="box" onclick="move(this)">1</div>
-    <div class="box" onclick="move(this)">2</div>
-    <div class="box" onclick="move(this)">3</div>
-    <div class="box" onclick="move(this)">4</div>
-    <div class="box" onclick="move(this)">5</div>
-    <div class="box" onclick="move(this)">6</div>
-    <div class="box" onclick="move(this)">7</div>
-    <div class="box" onclick="move(this)">8</div>
-    <div class="box" onclick="move(this)">9</div>
-    <div class="box" onclick="move(this)">10</div>
-    <div class="box" onclick="move(this)">11</div>
-    <div class="box" onclick="move(this)">12</div>
-    <div class="box" onclick="move(this)">13</div>
-    <div class="box" onclick="move(this)">14</div>
-    <div class="box" onclick="move(this)">15</div>
-    <div class="box" onclick="move(this)"></div>
-
+    <div class="box" id="00" onclick="move(this)">
+        <img height="400px" width="400px" id="img00" src="img/1.jpg">
+    </div>
+    <div class="box" id="01" onclick="move(this)">
+        <img height="400px" width="400px" id="img01" src="img/1.jpg">
+    </div>
+    <div class="box" id="02" onclick="move(this)">
+        <img height="400px" width="400px" id="img02" src="img/1.jpg">
+    </div>
+    <div class="box" id="03" onclick="move(this)">
+        <img height="400px" width="400px" id="img03" src="img/1.jpg">
+    </div>
+    <div class="box" id="10"  onclick="move(this)">
+        <img height="400px" width="400px" id="img10" src="img/1.jpg">
+    </div>
+    <div class="box" id="11" onclick="move(this)">
+        <img height="400px" width="400px" id="img11" src="img/1.jpg">
+    </div>
+    <div class="box" id="12" onclick="move(this)">
+        <img height="400px" width="400px" id="img12" src="img/1.jpg">
+    </div>
+    <div class="box" id="13" onclick="move(this)">
+        <img height="400px" width="400px" id="img13" src="img/1.jpg">
+    </div>
+    <div class="box" id="20"  onclick="move(this)">
+        <img height="400px" width="400px" id="img20" src="img/1.jpg">
+    </div>
+    <div class="box" id="21" onclick="move(this)">
+        <img height="400px" width="400px" id="img21" src="img/1.jpg">
+    </div>
+    <div class="box" id="22" onclick="move(this)">
+        <img height="400px" width="400px" id="img22" src="img/1.jpg">
+    </div>
+    <div class="box" id="23" onclick="move(this)">
+        <img height="400px" width="400px" id="img23" src="img/1.jpg">
+    </div>
+    <div class="box" id="30" onclick="move(this)">
+        <img height="400px" width="400px" id="img30" src="img/1.jpg">
+    </div>
+    <div class="box" id="31" onclick="move(this)">
+        <img height="400px" width="400px" id="img31" src="img/1.jpg">
+    </div>
+    <div class="box" id="32" onclick="move(this)">
+        <img height="400px" width="400px" id="img32" src="img/1.jpg">
+    </div>
+    <div class="box" id="33" onclick="move(this)">
+        <img id="beNull" height="400px" width="400px" src="img/1.jpg">
+    </div>
 </div>
 
 
 <script type="text/javascript">
-function move(ele) {
-    var selected_dom = document.getElementsByClassName("box selected");
-
-
-    if(selected_dom.length == 0){
-        ele.setAttribute("class", "box selected");
-    }else {
-        selected_dom.item(0).setAttribute("class", "box");
-        ele.setAttribute("class", "box selected");
+    document.ondragstart=function() {return false;};
+    $(document).ready(function () {
+        var random1 = Math.floor(Math.random() * 100 + 100);
+        var random2 = Math.floor(Math.random() * 100 + 100);
+        var sum_index = random1 + random2;
+        for(var i = 0; i < sum_index; i++){
+            var random_index1 = Math.floor(Math.random() * 8);
+            var random_index2 = Math.floor(Math.random() * 8 + 8);
+            var imgs = $("img");
+            var img1 = imgs[random_index1];
+            var img2 = imgs[random_index2];
+            swapImg(img1, img2);
+        }
+    });
+    function swapImg(img1, img2) {
+            var temp = img2.id;
+            img2.id = img1.id;
+            img1.id = temp;
     }
-}
+    function move(ele) {
+
+        var selected_dom = document.getElementsByClassName("box selected");
+        if(selected_dom.length == 0){
+            ele.setAttribute("class", "box selected");
+        }else {
+            selected_dom.item(0).setAttribute("class", "box");
+            ele.setAttribute("class", "box selected");
+        }
+        if( check_is_next(ele)){
+            var img1 = $(ele).children()[0];
+            var img2 = $('#beNull')[0];
+//         var s = "";
+//         $.each( img1.class, function (key, val) {
+//            s +=  key +  " : " + val + "\n";
+//        });
+            swapImg(img1, img2)
+        }
+        check_is_sucess();
+    }
+    function check_is_sucess() {
+        var imgs = $("img");
+
+        var flag = true;
+         $.each( imgs, function (key, val) {
+             var imgName = [
+                 'img00', 'img01', 'img02', 'img03',
+                 'img10', 'img11', 'img12', 'img13',
+                 'img20', 'img21', 'img22', 'img23',
+                 'img30', 'img31', 'img32', 'beNull'
+             ];
+             if(imgs[key].id != imgName[key]){
+                flag = false;
+             }
+        });
+        if(flag)
+            alert("你成功了！");
+    }
+    function check_is_next(ele) {
+
+        var ele_x = ele.id[0];
+        var ele_y = ele.id[1];
+
+        var nullNode = document.getElementById("beNull").parentNode.id;
+        var null_x = nullNode[0];
+        var null_y = nullNode[1];
+        return ((Math.abs(null_x - ele_x) == 1) && (null_y == ele_y))|| ((Math.abs(null_y - ele_y) == 1) && (null_x == ele_x));
+    }
 </script>
 
 

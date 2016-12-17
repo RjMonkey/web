@@ -1,0 +1,12 @@
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.min.js"></script>
+<style>#div1,#div2{width:100px;height:100px;border:solid 1px #000;position:absolute;left:100px;top:100px;background:#eee;}
+#div2{top:300px;left:300px}</style>
+<input type="button" onclick="swap()" value="交换" />
+<script>
+    function swap() {
+        var div1 = $('#div1'), div2 = $('#div2');
+        var p1 = div1.offset(), p2 = div2.offset();
+        div1.animate(p2, 1000); div2.animate(p1, 1000);
+    }
+</script>
+<div id="div1">div1</div><div id="div2">div2</div>
